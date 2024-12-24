@@ -24,6 +24,6 @@ def home():
     return render_template('index.html', firstday=delta.days, dateday=delta2.days)
 
 
-
+s
 if __name__ == "__main__":
     app.run()
