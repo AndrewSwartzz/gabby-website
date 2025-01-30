@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template
 import datetime
+from random import randint
 
 
 app = Flask(__name__)
 
 
 @app.route("/")
+@app.route('/home')
 
 def home():
 
@@ -22,6 +24,15 @@ def home():
     delta2 = today - given_date
 
     return render_template('index.html', firstday=delta.days, dateday=delta2.days)
+
+@app.route('/flirt')
+def flirt():
+    flirtlines = ['Girl are you my daily flintstones gummies, because i could eat you up every single day ahaha',
+                  'Girl are you a subway employee, because id pay you 5 dollars to make me a foot long ahaha',
+                  'Girl are you the dying dehydrated basil plant on my window sill, because all i wanna do is see you get wet']
+    flirtline = flirtlines[randint(0,2)]
+    return render_template('pickupline.html', line=flirtline)
+
 
 if __name__ == "__main__":
     app.run()
