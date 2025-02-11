@@ -1,10 +1,10 @@
 
-from flask import Flask, render_template, redirect, flash, url_for
+from flask import render_template
 import datetime
 from random import randint
-from app.forms import LoginForm
+from forms import LoginForm
 from app import app
-from flask_sqlalchemy import SQLAlchemy
+
 
 @app.route("/")
 @app.route('/home')
