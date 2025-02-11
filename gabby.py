@@ -2,7 +2,7 @@
 from flask import render_template
 import datetime
 from random import randint
-from forms import LoginForm
+from app.forms import LoginForm
 from app import app
 
 
