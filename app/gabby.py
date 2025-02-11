@@ -1,10 +1,10 @@
-from flask import Flask, request, render_template
+
+from flask import Flask, render_template, redirect, flash, url_for
 import datetime
 from random import randint
-
-
-app = Flask(__name__)
-
+from app.forms import LoginForm
+from app import app
+from flask_sqlalchemy import SQLAlchemy
 
 @app.route("/")
 @app.route('/home')
@@ -32,6 +32,15 @@ def flirt():
                   'Girl are you the dying dehydrated basil plant on my window sill, because all i wanna do is see you get wet']
     flirtline = flirtlines[randint(0,2)]
     return render_template('pickupline.html', line=flirtline)
+
+
+@app.route('/date', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+
+        return render_template('success.html', choice=form.choice.data, other=form.otherrestaurant.data)
+    return render_template('login.html', title = 'Sign In', form=form)
 
 
 if __name__ == "__main__":

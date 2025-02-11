@@ -11,12 +11,22 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     <title>Gabby Fan Page</title>
 </head>
 <body>
+{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     <h1 style="color:darkmagenta;text-shadow:
     -1px -1px 0 white,
     1px -1px 0 white,
     -1px 1px 0 white,
     1px 1px 0 white;"> Andrew's Online Gabby Shrine :-)</h1>
-    <p><img src="https://photos.smugmug.com/photos/i-hsPMmPM/0/Ld5jNPKS9dxqGDGc89Pwbct5bDS5mJ6xwGb869SSD/M/i-hsPMmPM-M.png" alt="Image from external source">
+    <p>
+        <a href="/date"><img src="https://photos.smugmug.com/photos/i-hsPMmPM/0/Ld5jNPKS9dxqGDGc89Pwbct5bDS5mJ6xwGb869SSD/M/i-hsPMmPM-M.png" alt="Image from external source"></a>
     <a href="/flirt"><img src="https://photos.smugmug.com/photos/i-b28nNMB/0/LBJs6pQRPkrSqjmZTMFWs6X4kwD29Cm96z7h2CNxD/M/i-b28nNMB-M.png" alt="Image from external source"></a></p>
     <br>
     <iframe width="420" height="345" src="https://www.youtube.com/embed/Uug7z_448WQ?si=O3E-nh96Dh8rWW0O&loop=1">
@@ -31,19 +41,22 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     1px 1px 0 white;">Buttons for Gabby To Fidget With</h2>
 
 <form>
-  <input type="radio" id="html" name="fav_language" value="HTML" style="height:40px; width:40px; vertical-align: middle;" CHECKED>
-  <input type="radio" id="css" name="fav_language" value="CSS" style="height:20px; width:20px; vertical-align: middle;" CHECKED>
-  <input type="radio" id="javascript" name="fav_language" value="JavaScript" style="height:35px; width:25px; vertical-align: middle;">
-    <input type="radio" id="javscript" name="fav_language" value="JavaScript"style="height:40px; width:30px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="javascipt" name="fav_language" value="JavaScript"style="height:30px; width:20px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="jaascript" name="fav_language" value="JavaScript"style="height:50px; width:50px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="jvascript" name="fav_language" value="JavaScript" style="height:20px; width:20px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="jvascrit" name="fav_language" value="JavaScript" style="height:45px; width:45px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="jvaript" name="fav_language" value="JavaScript" style="height:32px; width:32px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="jvascpt" name="fav_language" value="JavaScript" style="height:55px; width:55px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="jvript" name="fav_language" value="JavaScript" style="height:39px; width:39px; vertical-align: middle;" CHECKED>
-    <input type="radio" id="jascript" name="fav_language" value="JavaScript" style="height:27px; width:27px; vertical-align: middle;" CHECKED>
+  <input type="radio" id="html" name="fav_language" value="HTML" onclick="playSound()" style="height:40px; width:40px; vertical-align: middle;">
+  <input type="radio" id="css" name="fav_language" value="CSS" onclick="playSound()" style="height:20px; width:20px; vertical-align: middle;" CHECKED>
+  <input type="radio" id="javascript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:35px; width:25px; vertical-align: middle;">
+    <input type="radio" id="javscript" name="fav_language" onclick="playSound()" value="JavaScript"style="height:40px; width:30px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="javascipt" name="fav_language" onclick="playSound()" value="JavaScript"style="height:30px; width:20px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="jaascript" name="fav_language" onclick="playSound()" value="JavaScript"style="height:50px; width:50px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="jvascript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:20px; width:20px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="jvascrit" name="fav_language" onclick="playSound()" value="JavaScript" style="height:45px; width:45px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="jvaript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:32px; width:32px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="jvascpt" name="fav_language" onclick="playSound()" value="JavaScript" style="height:55px; width:55px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="jvript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:39px; width:39px; vertical-align: middle;" CHECKED>
+    <input type="radio" id="jascript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:27px; width:27px; vertical-align: middle;" CHECKED>
 </form>
+
+<audio> controls src='Pop_sound_effect.mp3'</audio>
+
 <br>
 
 <h2 style="color:darkmagenta;text-shadow:
@@ -55,7 +68,7 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     -1px -1px 0 white,
     1px -1px 0 white,
     -1px 1px 0 white,
-    1px 1px 0 white;">That is 8 months!</h2>
+    1px 1px 0 white;">That is 9 months!</h2>
 
 
 <h2 style="color:darkorange;text-shadow:
@@ -67,7 +80,7 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     -1px -1px 0 white,
     1px -1px 0 white,
     -1px 1px 0 white,
-    1px 1px 0 white;"> That is 4 months!</h2>
+    1px 1px 0 white;"> That is 5 months!</h2>
 <br>
 </body>
 <h2 style="color:darkmagenta;text-shadow:
