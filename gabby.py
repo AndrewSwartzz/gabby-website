@@ -4,6 +4,7 @@ import datetime
 from random import randint
 from app.forms import LoginForm
 from app import app
+import flask_wtf
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.fields.choices import RadioField
