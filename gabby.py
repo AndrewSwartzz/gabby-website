@@ -18,6 +18,7 @@ def home():
     today = datetime.date.today()
     delta = today - given_date
     months1 = delta.days//30
+    daysmonths1 = delta.days % 30
 
     date_str = '2024-09-06'
     date_format = "%Y-%m-%d"
@@ -25,8 +26,10 @@ def home():
     today = datetime.date.today()
     delta2 = today - given_date
     months2 = delta2.days//30
+    daysmonths2 = delta2.days % 30
 
-    return render_template('index.html', firstday=delta.days, dateday=delta2.days, months1=months1, months2=months2)
+    return render_template('index.html', firstday=delta.days, dateday=delta2.days, months1=months1, months2=months2
+                           ,daysmonths1=daysmonths1, daysmonths2=daysmonths2)
 
 @app.route('/flirt')
 def flirt():
@@ -43,4 +46,8 @@ def login():
     if form.validate_on_submit():
 
         return render_template('success.html', choice=form.choice.data, other=form.otherrestaurant.data)
-    return render_tem
+    return render_template('login.html', title = 'Sign In', form=form)
+
+
+if __name__ == "__main__":
+    app.run()
