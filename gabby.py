@@ -43,8 +43,4 @@ def login():
     if form.validate_on_submit():
 
         return render_template('success.html', choice=form.choice.data, other=form.otherrestaurant.data)
-    return render_template('login.html', title = 'Sign In', form=form)
-
-
-if __name__ == "__main__":
-    app.run()
+    return render_tem
