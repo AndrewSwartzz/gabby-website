@@ -4,7 +4,7 @@ import datetime
 from random import randint
 from app.forms import LoginForm
 from app import app
-
+from datetime import datetime as dt
 
 
 @app.route("/")
@@ -28,7 +28,16 @@ def home():
     months2 = delta2.days//30
     daysmonths2 = delta2.days % 30
 
-    return render_template('index.html', firstday=delta.days, dateday=delta2.days, months1=months1, months2=months2
+    target_date = dt(2004, 4, 7)
+    days_since = (dt.now() - target_date).days
+    age = (days_since//365)-1
+
+    if today.day == 7 and today.month == 4:
+        return render_template('birthday.html', firstday=delta.days, dateday=delta2.days, months1=months1, months2=months2
+                               , daysmonths1=daysmonths1, daysmonths2=daysmonths2, days_since=days_since, age=age)
+
+    else:
+        return render_template('index.html', firstday=delta.days, dateday=delta2.days, months1=months1, months2=months2
                            ,daysmonths1=daysmonths1, daysmonths2=daysmonths2)
 
 @app.route('/flirt')
@@ -47,6 +56,15 @@ def login():
 
         return render_template('success.html', choice=form.choice.data, other=form.otherrestaurant.data)
     return render_template('login.html', title = 'Sign In', form=form)
+
+@app.route('/coupons')
+def coupons():
+    coupons = [
+        {"title": "Breakfast in Bed", "code": "LOVE123", "valid": True},
+        {"title": "Free Hug", "code": "HUG456", "valid": True},
+        # Add more coupons
+    ]
+    return render_template('coupons.html', coupons=coupons)
 
 
 if __name__ == "__main__":

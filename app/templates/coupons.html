@@ -1,0 +1,11 @@
+
+<div class="coupon-book">
+    <h2>Redeemable Love Coupons</h2>
+    {% for coupon in coupons %}
+    <div class="coupon {% if not coupon.valid %}redeemed{% endif %}">
+        <h3>{{ coupon.title }}</h3>
+        <p>Code: {{ coupon.code }}</p>
+        <button onclick="redeemCoupon(this)">Redeem</button>
+    </div>
+    {% endfor %}
+</div>

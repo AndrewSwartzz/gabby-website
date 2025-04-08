@@ -4,7 +4,7 @@
     <style>
 h1 {text-align: center;}
 h2 {text-align: center;font-size: 22px}
-body {text-align: center; background-image: url("https://static.vecteezy.com/system/resources/previews/023/158/011/non_2x/cat-seamless-pattern-kitten-cat-paw-isolated-doodle-background-wallpaper-vector.jpg")}
+body {text-align: center; background-image: url("https://img.freepik.com/premium-vector/cute-birthday-cat-watercolor-seamless-pattern_306501-96.jpg")}
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,18 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
             height: 10px;
             background-color: #f00;
             top: -10px;
+        }
+        .heart {
+            color: #e91e63;""
+            font-size: 100px;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
@@ -33,11 +45,25 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     -1px -1px 0 white,
     1px -1px 0 white,
     -1px 1px 0 white,
-    1px 1px 0 white;"> Andrew's Online Gabby Shrine :-)</h1>
+    1px 1px 0 white;"> Happy Birthday Gabby!!! :-)</h1>
+
+    <div class="heart">🩷🐱🩷</div>
+
+    <h1 style="color:darkmagenta;text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;"> The Big {{ age }}! </h1>
+
     <p>
-        <a href="/date"><img src="https://photos.smugmug.com/photos/i-hsPMmPM/0/Ld5jNPKS9dxqGDGc89Pwbct5bDS5mJ6xwGb869SSD/M/i-hsPMmPM-M.png" alt="Image from external source"></a>
-    <a href="/flirt"><img src="https://photos.smugmug.com/photos/i-b28nNMB/0/LBJs6pQRPkrSqjmZTMFWs6X4kwD29Cm96z7h2CNxD/M/i-b28nNMB-M.png" alt="Image from external source"></a></p>
+        <a href='https://postimg.cc/67yt5wLL' target='_blank'><img src='https://i.postimg.cc/PqMxy5Cc/A8180-AB0-4-EB0-4388-963-A-20-CF8-A56-FB8-C.png' width="400" height="400" border='0' alt='A8180-AB0-4-EB0-4388-963-A-20-CF8-A56-FB8-C'/></a>
+        <a href='/coupons' target='_blank'><img src='https://i.postimg.cc/T20V1TQt/406-C246-D-3107-45-ED-A9-F4-C8-C738-BBA7-A8.png' width="400" height="400" border='0' alt='406-C246-D-3107-45-ED-A9-F4-C8-C738-BBA7-A8'/></a>
     <br>
+<h1 style="color:darkmagenta;text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;"> Girl you must be {{days_since}} days old, because you get {{ days_since}} times more pretty everytime I see you </h1>
     <iframe width="420" height="345" src="https://www.youtube.com/embed/Uug7z_448WQ?si=O3E-nh96Dh8rWW0O&loop=1">
 </iframe>
     <br>
@@ -64,7 +90,9 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     <input type="radio" id="jascript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:27px; width:27px; vertical-align: middle;" CHECKED>
 </form>
 
-<audio> controls src='Pop_sound_effect.mp3'</audio>
+<iframe src="https://open.spotify.com/embed/playlist/your-playlist-id"
+        width="300" height="380" frameborder="0" allowtransparency="true"
+        allow="encrypted-media"></iframe>
 
 <br>
 
@@ -119,5 +147,48 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
 
 <img src="https://photos.smugmug.com/photos/i-xzW9x9G/0/K7tK8hScWhv2cWJJ3Hn72NsVpcBTKJwz5wFRGR2W5/L/i-xzW9x9G-L.gif" alt="alternatetext">
 
+    <script>
+        let confettiInterval;
+        const colors = ['#f00', '#0f0', '#00f', '#ff0', '#f0f', '#0ff'];
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+            document.body.appendChild(confetti);
+
+            let pos = -10;
+            let speed = 1 + Math.random() * 3;
+            let spin = Math.random() * 10 - 5;
+            let angle = 0;
+
+            const fall = setInterval(() => {
+                pos += speed;
+                angle += spin;
+                confetti.style.top = pos + 'px';
+                confetti.style.transform = 'rotate(' + angle + 'deg)';
+
+                if (pos > window.innerHeight) {
+                    clearInterval(fall);
+                    confetti.remove();
+                }
+            }, 20);
+        }
+
+        function startConfetti() {
+            stopConfetti(); // Clear any existing interval
+            confettiInterval = setInterval(createConfetti, 50);
+        }
+
+        function stopConfetti() {
+            clearInterval(confettiInterval);
+        }
+
+        // Optional: Auto-start
+
+        {window.onload = startConfetti;}
+    </script>
 
 </html>
