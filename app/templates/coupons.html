@@ -5,7 +5,21 @@
     <div class="coupon {% if not coupon.valid %}redeemed{% endif %}">
         <h3>{{ coupon.title }}</h3>
         <p>Code: {{ coupon.code }}</p>
-        <button onclick="redeemCoupon(this)">Redeem</button>
+            <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=64) }}<br>
+            {% form.name == coupon.title %}
+            {% form.code == coupon.code %}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
     </div>
     {% endfor %}
 </div>
+
+

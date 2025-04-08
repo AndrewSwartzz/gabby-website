@@ -1,9 +1,14 @@
 
-from flask import render_template
+from flask import render_template, flash
 import datetime
 from random import randint
-from app.forms import LoginForm
+
+from flask_wtf import form
+
+from app.email import send_email, send_redeem_email
+from app.forms import LoginForm, RedeemForm
 from app import app
+
 from datetime import datetime as dt
 
 
@@ -57,14 +62,18 @@ def login():
         return render_template('success.html', choice=form.choice.data, other=form.otherrestaurant.data)
     return render_template('login.html', title = 'Sign In', form=form)
 
-@app.route('/coupons')
+@app.route('/coupons', methods=['GET', 'POST'])
 def coupons():
     coupons = [
         {"title": "Breakfast in Bed", "code": "LOVE123", "valid": True},
         {"title": "Free Hug", "code": "HUG456", "valid": True},
         # Add more coupons
     ]
-    return render_template('coupons.html', coupons=coupons)
+    form = RedeemForm()
+    if form.validate_on_submit():
+        send_redeem_email(form.email.data)
+        flash('Redeemed Coupon!')
+    return render_template('coupons.html', coupons=coupons,form=form)
 
 
 if __name__ == "__main__":
