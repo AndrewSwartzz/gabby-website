@@ -1,0 +1,162 @@
+<title>Gabby Fan Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+    body {
+        background-image: url("https://img.freepik.com/premium-vector/cute-birthday-cat-watercolor-seamless-pattern_306501-96.jpg");
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .confetti-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    </style>
+
+<div class="reasons-container">
+    <h1 style="color:darkmagenta;text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;"> <span id="total-reasons"></span> Reasons I Love Gabby </h1>
+    <button id="reveal-btn">Click for Reason #<span id="reason-number">1</span></button>
+    <div id="reason-display" class="reason-box"></div>
+</div>
+<script>
+    const reasons = [
+        "Your smile that brightens my bad days",
+        "The way you treat others makes me fall in love all over again",
+        "Your incredible noggin",
+        "I meant the last one like your smart, not a sexual way",
+        "I get swallowed by your eyes everytime I gaze into them",
+        "You pull up with revolutionary style every morning",
+        "You are so grateful for everything you deserve",
+        "Your openness with strangers amazes me everytime",
+        "The way you giggle illuminates the world around you",
+        "Your bursts of texts I receive after being away from my phone",
+        "Your undying dedication to the people you care about",
+        "Your commitment to the ideals you believe in",
+        "The way you wave to me even when my car is driving away",
+        "The overwhelming bites and kisses I receive after some time apart",
+        "The intimate snuggles we get in before repositioning in bed",
+        "The 20 minutes of snuggling we get in between alarms",
+        "The way you geek out over the nerdiest topics",
+        "Your unwavering faith in me",
+        "Your unwavering faith in animated children's movies",
+        "The little ways she shows she cares",
+        "She understand me without saying a word",
+        "She makes the ordinary feel like a dream",
+        "She taught me love",
+        "The way she nestles perfectly in my body",
+        "The beautiful way she sees the world with her wondrous mind",
+        "How she believes in me when I dont even believe in myself",
+        "Finding joy in the tiniest of things",
+        "When she wears her signature perfume",
+        "When she changes her hair for like the hundredth time",
+        "The warmth I feel all day when I wake up next to you",
+        "The way you smile at me when I hold the door for you",
+        "The couple seconds we scramble to hold the door for each other",
+        "When you smack my butt going up the stairs",
+        "When you smack my butt while gurgling mouthwash",
+        "Pretty much whenever you smack my butt, he secretly loves it",
+        "Letting me borrow your clothing",
+        "All the jewelery you gift me so I can remember you always",
+        "The big stretch you do when you've finished your homework",
+        "When you talk to me like a little puppy dog",
+        "Your random calls throughout the day",
+        "The nonsensical names you come up with for me",
+        "The way you are unbound from most social rules",
+        "Your skill for making friends for your friends",
+        "The way you are always right about everything",
+        "Her sixth sense that allows her to judge fake people",
+        "She puts effort into the people I care about",
+        "Her baller ass music taste",
+        "The way she likes boys AND GIRLS",
+        "My mom likes her :)",
+        "The trust she puts into this me",
+        "When she sets up the table for us",
+        "When she stalks me in a hot not a creepy way",
+        "When she womansplains her physics all over me",
+        "Sharing an intimate cigarette together",
+        "Sensually whispering fast food items to each other",
+        "When she recognizes something that I like and shares it with me",
+        "The spontaneous cookies",
+        "How she is oh so gentle on my mind",
+        "Her compassion for sharing info on global issues",
+        "The random minutes long rants she sends when I am absent",
+        "Her stuffed animal collection",
+        "The precise methods she has for the mundane things",
+        "The freak outs when I have an unexpected work shift",
+        "When she starts crying over acts of generosity",
+        "Her willingness to play and watch the things I enjoy",
+        "The fit videos when she dons a fire ass outfit",
+        "When she posts appreciation posts on her story",
+        "Her singing videos",
+        "The names for Pokemon she makes up on the spot",
+        "Her desire for making the most of her life",
+        "Her love bites",
+        "Her ability to tell when im hangry",
+        "The little moles and marks all over her body",
+        "Going nonverbal together",
+        "Sitting on the floor and eating a banquet together",
+        "The reserved Andrew drawer",
+        "Meows over the phone",
+        "When she squeezes her boobs together ;)",
+        "When she shakes that voluptuous bosom of hers :)",
+        "Her Miniverse addiction",
+        "She is my favorite bad financial decisions",
+        "When she falls asleep on me",
+        "Her incoherent sleep talking fits",
+        "The morning breath kisses we share",
+        "Bringing her food in the morning",
+        "The 'I miss you's",
+        "The bond I feel even when we're apart",
+        "When I smack your badonker and it jiggle",
+        "Reminiscing during our clips show",
+        "When she sends videos of her cute little circuits",
+        "Watching her do crazy math junk on the board",
+        "Getting Sunday terraces together",
+        "When she falls asleep as my passenger princess",
+        "Her fire never grows cold",
+        "She lets me be a cornball",
+        "Her spontaneous goodnight poems",
+        "When she rubs my hand and lays her head on my shoulder",
+        "Watching the geese together",
+        "Watching her walk away (not a butt thing)",
+        "My girlfriend is so gorgeous, intelligent, authentic, funny, compassionate, loyal, courageous, ambitious, attentive and my orbit",
+        "I love you Gabby, Happy Birthday <3"
+
+
+
+
+
+    ];
+
+    const totalReasons = reasons.length;
+    document.getElementById('total-reasons').textContent = totalReasons;
+
+    let currentReason = 0;
+    document.getElementById('reveal-btn').addEventListener('click', function() {
+        document.getElementById('reason-display').innerHTML = reasons[currentReason];
+        currentReason = (currentReason + 1) % reasons.length;
+        document.getElementById('reason-number').textContent = currentReason + 1;
+    });
+
+
+</script>
+
+<style>
+    .reason-box {
+        min-height: 100px;
+        padding: 20px;
+        margin: 20px 0;
+        background-color: #fff5f5;
+        border-radius: 10px;
+        font-style: italic;
+    }
+</style>
+
