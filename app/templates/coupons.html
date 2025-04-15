@@ -32,6 +32,7 @@
         position: relative;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         background: linear-gradient(to bottom, #fff9f9, #fff0f5);
+
     }
 
     .coupon:before, .coupon:after {
@@ -134,11 +135,18 @@
     -1px 1px 0 white,
     1px 1px 0 white;"> Input Email to Redeem </h2>
 
+<div class="coupon-book">
+    <!-- [Keep all your existing styles and header content] -->
+
     <div class="container mt-5">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show">
+                    <div style="color:darkmagenta;text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;" class="alert alert-{{ category }} alert-dismissible fade show">
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -149,7 +157,7 @@
         <div class="coupon {% if not coupon.valid %}redeemed{% endif %}">
             <h3>{{ coupon.title }}</h3>
             <div class="code">Code: {{ coupon.code }}</div>
-            <form action="" method="post">
+            <form action="" method="post" onsubmit="return handleSubmit(event)">
                 {{ form.hidden_tag() }}
                 <p>
                     {{ form.email.label }}<br>
@@ -160,7 +168,7 @@
                     <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </p>
-                <p>{{ form.submit(onclick="fireConfetti()", class="confetti-button") }}</p>
+                <p><button type="submit" class="confetti-button">Submit</button></p>
             </form>
         </div>
         {% endfor %}
@@ -174,6 +182,19 @@
                 origin: { y: 0.6 },
                 colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff']
             });
+        }
+
+        function handleSubmit(event) {
+            // Fire confetti immediately
+            fireConfetti();
+
+            // Add a small delay to allow confetti to be visible before form submits
+            setTimeout(() => {
+                event.target.submit();
+            }, 1000);
+
+            // Prevent immediate form submission
+            return false;
         }
     </script>
 </div>
