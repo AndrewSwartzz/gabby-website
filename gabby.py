@@ -37,7 +37,7 @@ def home():
     days_since = (dt.now() - target_date).days
     age = (days_since//365)-1
 
-    if today.day == 16 and today.month == 4:
+    if today.day == 15 and today.month == 4:
         return render_template('birthday.html', firstday=delta.days, dateday=delta2.days, months1=months1, months2=months2
                                , daysmonths1=daysmonths1, daysmonths2=daysmonths2, days_since=days_since, age=age)
 
