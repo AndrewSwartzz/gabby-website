@@ -37,7 +37,7 @@ def home():
     days_since = (dt.now() - target_date).days
     age = (days_since//365)-1
 
-    if today.day == 7 and today.month == 4:
+    if today.day == 15 and today.month == 4:
         return render_template('birthday.html', firstday=delta.days, dateday=delta2.days, months1=months1, months2=months2
                                , daysmonths1=daysmonths1, daysmonths2=daysmonths2, days_since=days_since, age=age)
 
@@ -66,14 +66,23 @@ def login():
 def coupons():
     coupons = [
         {"title": "Breakfast in Bed", "code": "LOVE123", "valid": True},
-        {"title": "Free Hug", "code": "HUG456", "valid": True},
-        # Add more coupons
+        {"title": "5 Minute Makeout", "code": "KIS456", "valid": True},
+        {"title": "1 Free Raspberry", "code": "RAS343", "valid": True},
+        {"title": "Full Expense Panera Trip", "code": "PAN346", "valid": True},
+        {"title": "Back Massage", "code": "BAK983", "valid": True},
+        {"title": "10 No Resistance Ass Slaps", "code": "ASS069", "valid": True},
+        {"title": "Piggy Back Ride to any Valid Location", "code": "PIG287", "valid": True}
     ]
     form = RedeemForm()
     if form.validate_on_submit():
-        send_redeem_email(form.email.data)
-        flash('Redeemed Coupon!')
-    return render_template('coupons.html', coupons=coupons,form=form)
+        send_redeem_email(form)
+        flash('Redeemed ' + form.name.raw_data[1] + ' Coupon!')
+        return render_template('coupons.html', title="Coupons",coupons=coupons, form=form)
+    return render_template('coupons.html', title="Coupons",coupons=coupons,form=form)
+
+@app.route('/reasons')
+def reasons():
+    return render_template('love_reasons.html', title="LoveReasons")
 
 
 if __name__ == "__main__":

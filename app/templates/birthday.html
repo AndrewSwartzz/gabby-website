@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3" preload="auto"></audio>
 <head>
     <style>
 h1 {text-align: center;}
 h2 {text-align: center;font-size: 22px}
 body {text-align: center; background-image: url("https://img.freepik.com/premium-vector/cute-birthday-cat-watercolor-seamless-pattern_306501-96.jpg")}
+
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,20 +19,27 @@ body {text-align: center; background-image: url("https://img.freepik.com/premium
             background-color: #f00;
             top: -10px;
         }
-        .heart {
-            color: #e91e63;""
-            font-size: 100px;
-            animation: heartbeat 1.5s infinite;
-        }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
+            .heart-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .heart-emoji {
+        font-size: 150px;
+        animation: heartbeat 1.5s infinite;
+        line-height: 1;
+    }
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        25% { transform: scale(1.1); }
+        50% { transform: scale(1); }
+        75% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
     </style>
 </head>
+
 <body>
 {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -47,7 +56,11 @@ body {text-align: center; background-image: url("https://img.freepik.com/premium
     -1px 1px 0 white,
     1px 1px 0 white;"> Happy Birthday Gabby!!! :-)</h1>
 
-    <div class="heart">🩷🐱🩷</div>
+    <div class="heart-container">
+    <div class="heart-emoji">🩷</div>
+    <div class="heart-emoji">🐱</div>
+    <div class="heart-emoji">🩷</div>
+</div>
 
     <h1 style="color:darkmagenta;text-shadow:
     -1px -1px 0 white,
@@ -56,7 +69,7 @@ body {text-align: center; background-image: url("https://img.freepik.com/premium
     1px 1px 0 white;"> The Big {{ age }}! </h1>
 
     <p>
-        <a href='https://postimg.cc/67yt5wLL' target='_blank'><img src='https://i.postimg.cc/PqMxy5Cc/A8180-AB0-4-EB0-4388-963-A-20-CF8-A56-FB8-C.png' width="400" height="400" border='0' alt='A8180-AB0-4-EB0-4388-963-A-20-CF8-A56-FB8-C'/></a>
+        <a href='/reasons' target='_blank'><img src='https://i.postimg.cc/PqMxy5Cc/A8180-AB0-4-EB0-4388-963-A-20-CF8-A56-FB8-C.png' width="400" height="400" border='0' alt='A8180-AB0-4-EB0-4388-963-A-20-CF8-A56-FB8-C'/></a>
         <a href='/coupons' target='_blank'><img src='https://i.postimg.cc/T20V1TQt/406-C246-D-3107-45-ED-A9-F4-C8-C738-BBA7-A8.png' width="400" height="400" border='0' alt='406-C246-D-3107-45-ED-A9-F4-C8-C738-BBA7-A8'/></a>
     <br>
 <h1 style="color:darkmagenta;text-shadow:
@@ -64,7 +77,9 @@ body {text-align: center; background-image: url("https://img.freepik.com/premium
     1px -1px 0 white,
     -1px 1px 0 white,
     1px 1px 0 white;"> Girl you must be {{days_since}} days old, because you get {{ days_since}} times more pretty everytime I see you </h1>
-    <iframe width="420" height="345" src="https://www.youtube.com/embed/Uug7z_448WQ?si=O3E-nh96Dh8rWW0O&loop=1">
+
+
+<iframe width="420" height="345" src="https://www.youtube.com/embed/Uug7z_448WQ?si=O3E-nh96Dh8rWW0O&loop=1">
 </iframe>
     <br>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/rwQIYwN9ctc?si=0JDFrm5BhkFAXuOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -88,11 +103,10 @@ body {text-align: center; background-image: url("https://img.freepik.com/premium
     <input type="radio" id="jvascpt" name="fav_language" onclick="playSound()" value="JavaScript" style="height:55px; width:55px; vertical-align: middle;" CHECKED>
     <input type="radio" id="jvript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:39px; width:39px; vertical-align: middle;" CHECKED>
     <input type="radio" id="jascript" name="fav_language" onclick="playSound()" value="JavaScript" style="height:27px; width:27px; vertical-align: middle;" CHECKED>
+    <input type="radio" onclick="playRandomSound()" ...>
 </form>
 
-<iframe src="https://open.spotify.com/embed/playlist/your-playlist-id"
-        width="300" height="380" frameborder="0" allowtransparency="true"
-        allow="encrypted-media"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5GXaLbokQeQXOD4V8E4aRN?utm_source=generator&theme=0" width="40%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
 <br>
 
@@ -141,7 +155,7 @@ body {text-align: center; background-image: url("https://img.freepik.com/premium
     -1px -1px 0 white,
     1px -1px 0 white,
     -1px 1px 0 white,
-    1px 1px 0 white;">Happy {{ months2 }} Months Beautiful Dipple</h1>
+    1px 1px 0 white;">Happy Birthday Beautiful Dipple</h1>
 
 <br>
 
@@ -189,6 +203,8 @@ body {text-align: center; background-image: url("https://img.freepik.com/premium
         // Optional: Auto-start
 
         {window.onload = startConfetti;}
+
+
     </script>
 
 </html>

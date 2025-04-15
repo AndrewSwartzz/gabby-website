@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.fields.choices import RadioField
+from wtforms.fields.simple import HiddenField
 from wtforms.validators import Email
 
 
@@ -11,6 +12,6 @@ class LoginForm(FlaskForm):
 
 class RedeemForm(FlaskForm):
     email = StringField('Email')
-    name = ""
-    code = ""
+    name = HiddenField('')
+    code = HiddenField('')
     submit = SubmitField('Redeem')

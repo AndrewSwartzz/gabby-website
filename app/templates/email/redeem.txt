@@ -2,11 +2,11 @@ Dear Gabriella,
 
 You have redeemed the:
 
-Insert Coupon Name
+{{ name }}
 
 Your redemption code is:
 
-Insert Code
+{{ code }}
 
 Sincerely,
 
