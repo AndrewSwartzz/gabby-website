@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+h1 {text-align: center;}
+h2 {text-align: center;font-size: 22px}
+body {text-align: center; background-image: url("https://static.vecteezy.com/system/resources/previews/023/158/011/non_2x/cat-seamless-pattern-kitten-cat-paw-isolated-doodle-background-wallpaper-vector.jpg")}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabby Fan Page</title>
+</head>
+<body>
+<span style="color: purple;"><h1>Happy Valentines Day <3</h1></span>
+<img src="https://photos.smugmug.com/photos/i-HQ7VSCp/0/KXPP2G2c9gW5RhXb3thHWdNPLHLbKsHkTWJzSj7RD/S/i-HQ7VSCp-S.png" alt=""></a>">
+    <form action="" method="post">
+    {{ form.hidden_tag() }}
+
+
+     <span style="color: purple;"><h2>Where We Eating At</h2></span>
+
+        {% for subfield in form.choice %}
+    <tr>
+        <td>{{ subfield }}</td>
+        <span style="color: purple;text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;"><td>{{ subfield.label }}</td></span>
+    </tr>
+{% endfor %}
+
+        {% for error in form.choice.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <br>
+        <span style="color: orange;text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;">{{ form.otherrestaurant.label }}</span>
+        {{ form.otherrestaurant(size=32) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+    </form>
+</body>
