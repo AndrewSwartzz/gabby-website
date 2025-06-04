@@ -1,0 +1,109 @@
+
+<div class="pokemon-game-container">
+    <h1>Learn Pokemon with Gabby!</h1>
+
+    <div class="game-stats">
+            {% if game_state.total_guesses > 0 %}
+                {{ ((game_state.correct_guesses / game_state.total_guesses) * 100)|round(1) }}%
+            {% else %}
+                0%
+            {% endif %}
+        </span></p>
+        <a href="/view-cute-list" class="view-cute-btn">View Cute List ({{ game_state.cute_list|length }})</a>
+    </div>
+
+    <div class="pokemon-display">
+        {% if game_state.current_pokemon %}
+            <img id="pokemon-image" src="{{ game_state.current_pokemon.sprite }}" alt="Pokémon">
+            <button onclick="addToCuteList('{{ game_state.current_pokemon.name }}')" class="cute-btn">
+                ❤️ AHHH Cute!
+            </button>
+        {% endif %}
+    </div>
+
+    <div class="options-container">
+        {% for option in game_state.options %}
+            <button class="option-btn" onclick="makeGuess('{{ option }}')">{{ option|title }}</button>
+        {% endfor %}
+    </div>
+
+    <div id="result-message" class="hidden"></div>
+    <div id="cute-message" class="hidden"></div>
+
+    <button onclick="location.reload()" class="new-game-btn">New Pokémon</button>
+</div>
+
+<script>
+function makeGuess(guess) {
+    fetch(`/pokemon-guess/${guess}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result-message').textContent =
+                data.correct ? "Correct!" : `Wrong! It was ${data.correct_pokemon}.`;
+            document.getElementById('result-message').className = data.correct ? "correct" : "incorrect";
+
+            // Update score and accuracy
+            document.getElementById('score').textContent = data.score;
+            document.getElementById('accuracy').textContent = `${data.accuracy.toFixed(1)}%`;
+
+            // Show the result message
+            document.getElementById('result-message').classList.remove('hidden');
+
+            // After a delay, load a new Pokémon
+            setTimeout(() => {
+                window.location.href = '/pokemon-game';
+            }, 2000);
+        });
+}
+
+function addToCuteList(pokemonName) {
+    fetch(`/add-cute/${pokemonName}`)
+        .then(response => response.json())
+        .then(data => {
+            const cuteMessage = document.getElementById('cute-message');
+            cuteMessage.textContent = data.message;
+            cuteMessage.className = data.success ? "cute-success" : "cute-fail";
+            cuteMessage.classList.remove('hidden');
+
+            // Update cute count
+            if(data.success) {
+                const viewCuteBtn = document.querySelector('.view-cute-btn');
+                const currentText = viewCuteBtn.textContent;
+                const newCount = parseInt(viewCuteBtn.textContent.match(/\((\d+)\)/)[1]) + 1;
+                viewCuteBtn.textContent = currentText.replace(/\(\d+\)/, `(${newCount})`);
+            }
+
+            setTimeout(() => {
+                cuteMessage.classList.add('hidden');
+            }, 2000);
+        });
+}
+</script>
+
+<style>
+.pokemon-game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.view-cute-btn {
+    padding: 5px 10px;
+    background-color: #ffb6c1;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.vi

@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
     <style>
-h1 {text-align: center;}
-h2 {text-align: center;font-size: 22px}
-body {text-align: center; background-image: url("https://static.vecteezy.com/system/resources/previews/023/158/011/non_2x/cat-seamless-pattern-kitten-cat-paw-isolated-doodle-background-wallpaper-vector.jpg")}
-</style>
+        h1 {text-align: center;}
+        h2 {text-align: center;font-size: 22px}
+        body {text-align: center; background-image: url("https://static.vecteezy.com/system/resources/previews/023/158/011/non_2x/cat-seamless-pattern-kitten-cat-paw-isolated-doodle-background-wallpaper-vector.jpg")}
+        .pokeball-link {
+            display: inline-block;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+        .pokeball-link:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabby Fan Page</title>
@@ -20,15 +28,15 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     </style>
 </head>
 <body>
-{% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
     <h1 style="color:darkmagenta;text-shadow:
     -1px -1px 0 white,
     1px -1px 0 white,
@@ -37,9 +45,24 @@ body {text-align: center; background-image: url("https://static.vecteezy.com/sys
     <p>
         <a href='/date' ><img src='https://i.postimg.cc/ZYcmFrzw/4-DC87-E74-BBC7-4003-91-AE-B8-BC5069-C9-AA.png' border='0' style="width: 30%; height: 30%"/></a>
     <a href='/flirt'><img src='https://i.postimg.cc/Z56Vpx1R/BAD487-CB-A00-D-4-B89-B36-D-A9899-C447781.png' border='0' style="width: 30%; height: 30%"/></a>
+
+    <!-- Add this Pokéball link to your game -->
+    <div class="pokeball-link">
+        <a href="/pokemon-game">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg"
+                 alt="Play Pokémon Game"
+                 style="width: 120px; height: 120px;">
+            <p style="color:darkred;text-shadow:
+                -1px -1px 0 white,
+                1px -1px 0 white,
+                -1px 1px 0 white,
+                1px 1px 0 white;"></p>
+        </a>
+    </div>
+
     <br>
     <iframe width="420" height="345" src="https://www.youtube.com/embed/Uug7z_448WQ?si=O3E-nh96Dh8rWW0O&loop=1">
-</iframe>
+    </iframe>
     <br>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/rwQIYwN9ctc?si=0JDFrm5BhkFAXuOk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>

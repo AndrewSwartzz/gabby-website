@@ -9,5 +9,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 mail = Mail(app)
 
+GOOGLE_API_KEY='AIzaSyAH59eBDXgoqaID5KsMHFx_GCmuwRMRhSY'
+
 
 

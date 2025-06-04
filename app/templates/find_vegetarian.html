@@ -1,0 +1,39 @@
+
+<div class="container mt-4">
+    <h1 class="mb-4">🍃 Find Vegetarian Options</h1>
+
+    <form method="POST" class="bg-light p-4 rounded">
+        <div class="mb-3">
+            <label for="location" class="form-label">
+                <i class="fas fa-map-marker-alt"></i> Location
+            </label>
+            <input type="text" class="form-control" id="location" name="location"
+                   placeholder="Enter city, address or zip code" required>
+            <div class="form-text">Example: "Chicago" or "90210" or "123 Main St"</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="radius" class="form-label">
+                <i class="fas fa-arrows-alt-h"></i> Search Radius
+            </label>
+            <select class="form-select" id="radius" name="radius">
+                <option value="1000">1 km</option>
+                <option value="5000" selected>5 km</option>
+                <option value="10000">10 km</option>
+                <option value="20000">20 km</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-search"></i> Find Vegetarian Food
+        </button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
